@@ -29,7 +29,7 @@
             android:label="@string/title_activity_no_looper" >
         </activity>
         <activity
-            android:name=".RaceCondition"
+            android:name=".RaceConditionActivity"
             android:label="@string/title_activity_race_condition" >
         </activity>
         <activity

@@ -22,14 +22,21 @@ public class ImageActivity extends ActionBarActivity {
         ImageView iv = (ImageView) findViewById(R.id.image_view);
         ImageView iv2 = (ImageView) findViewById(R.id.image_view2);
 
+        //Problematic
 //        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image, options);
+
+        //Solution
         Bitmap bm = decodeSampledBitmapFromResource(getResources(), R.drawable.image, 100, 100);
         int imageHeight = options.outHeight;
         int imageWidth = options.outWidth;
         String imageType = options.outMimeType;
         Log.d("image", "height: " + imageHeight + " width: " + imageWidth + " type: " + imageType);
         iv.setImageBitmap(bm);
+
+        //Problematic
 //        Bitmap bm2 = BitmapFactory.decodeResource(getResources(), R.drawable.image2, options);
+
+        //Solution
         Bitmap bm2 = decodeSampledBitmapFromResource(getResources(),R.drawable.image2,100,100);
         imageHeight = options.outHeight;
         imageWidth = options.outWidth;
