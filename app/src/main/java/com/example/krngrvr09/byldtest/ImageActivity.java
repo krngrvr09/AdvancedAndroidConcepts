@@ -17,20 +17,18 @@ public class ImageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
         ImageView iv = (ImageView) findViewById(R.id.image_view);
         ImageView iv2 = (ImageView) findViewById(R.id.image_view2);
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        // Dont load the Bitmap in memory if set to true.
+        options.inJustDecodeBounds = true;
 
         //Problematic
 //        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.image, options);
 
         //Solution
         Bitmap bm = decodeSampledBitmapFromResource(getResources(), R.drawable.image, 100, 100);
-        int imageHeight = options.outHeight;
-        int imageWidth = options.outWidth;
-        String imageType = options.outMimeType;
-        Log.d("image", "height: " + imageHeight + " width: " + imageWidth + " type: " + imageType);
         iv.setImageBitmap(bm);
 
         //Problematic
@@ -38,10 +36,6 @@ public class ImageActivity extends ActionBarActivity {
 
         //Solution
         Bitmap bm2 = decodeSampledBitmapFromResource(getResources(),R.drawable.image2,100,100);
-        imageHeight = options.outHeight;
-        imageWidth = options.outWidth;
-        imageType = options.outMimeType;
-        Log.d("image", "height: " + imageHeight + " width: " + imageWidth + " type: " + imageType);
         iv2.setImageBitmap(bm2);
     }
     public static int calculateInSampleSize(

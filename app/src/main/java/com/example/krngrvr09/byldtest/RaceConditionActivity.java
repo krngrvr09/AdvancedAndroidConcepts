@@ -21,6 +21,8 @@ public class RaceConditionActivity extends ActionBarActivity {
 
         Message msg = Message.obtain();
         msg.obj = "hello";
+        // The handler of the LooperThread may not be initialized
+        // when yu are accessing it here. This is the Race Condition.
         mLooperThread.mHandler.sendMessage(msg);
     }
 

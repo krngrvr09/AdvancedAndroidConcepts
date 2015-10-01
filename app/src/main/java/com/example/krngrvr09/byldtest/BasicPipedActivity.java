@@ -29,6 +29,10 @@ public class BasicPipedActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // The PipedReader will be on the end of the other Thread
+        // The PipedWriter will be on the UI Thread.
+        // We will write on the the pipe from the UI Thread, and read
+        // from the reader end on the other side.
         r = new PipedReader(32);
         w = new PipedWriter();
         try {
@@ -46,7 +50,6 @@ public class BasicPipedActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 // Only handle addition of characters
-//                Log.d("textchanged","charseq: "+charSequence+" start: "+start+" before: "+before+" count: "+count+" output: "+charSequence.subSequence(start, start+1).toString());
                 if(count > before) {
                     // Write the last entered character to the pipe
                     try {

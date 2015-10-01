@@ -16,10 +16,13 @@ import android.widget.ImageView;
 
 public class GridViewActivity extends ActionBarActivity {
     private ImageAdapter mAdapter;
+    // Will crash if images not downscaled.
     public final static Integer[] imageResIds = new Integer[] {
             R.drawable.image, R.drawable.image2, R.drawable.image3,
             R.drawable.image4, R.drawable.image5, R.drawable.image6,
             R.drawable.image7, R.drawable.image8, R.drawable.image9};
+
+    // Will not crash even if the images are not downscaled.
 //    public final static Integer[] imageResIds = new Integer[] {
 //            R.drawable.tick, R.drawable.tick, R.drawable.tick,
 //            R.drawable.tick, R.drawable.tick, R.drawable.tick,

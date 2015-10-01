@@ -17,6 +17,7 @@ public class InitialProblemActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity2);
+        //EditText is where you will type text.
         edit_text = (EditText) findViewById(R.id.edit_text2);
         edit_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -26,6 +27,9 @@ public class InitialProblemActivity extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Do a long running operation while the text is being stopped.
+                // You will notice you type one character, wait for 2 seconds,
+                // then type the second letter, wait for 2 seconds and so on...
                 longRunningOperation();
             }
 

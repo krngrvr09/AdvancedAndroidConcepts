@@ -23,9 +23,6 @@ public class NoLooperActivity extends ActionBarActivity {
             }
         });
     }
-//    public void onClick(){
-//        longRunningOperation();
-//    }
 
     public void longRunningOperation(){
         Log.d("inside", "long running operation");

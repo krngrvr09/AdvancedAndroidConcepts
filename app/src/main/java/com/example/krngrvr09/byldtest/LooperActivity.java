@@ -26,7 +26,8 @@ public class LooperActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (mLooperThread.mHandler != null) {
-                    Message msg = mLooperThread.mHandler.obtainMessage(0);
+                    Message msg = Message.obtain();
+                    msg.obj = "some data";
                     mLooperThread.mHandler.sendMessage(msg);
                 }
             }
@@ -50,7 +51,7 @@ public class LooperActivity extends ActionBarActivity {
             Looper.prepare();
             mHandler = new Handler() {
                 public void handleMessage(Message msg) {
-                    if(msg.what == 0) {
+                    if(msg.obj.equals("some data")) {
                         doLongRunningOperation();
                     }
                 }
@@ -60,6 +61,7 @@ public class LooperActivity extends ActionBarActivity {
 
     }
     protected void onDestroy() {
+
         mLooperThread.mHandler.getLooper().quit();
     }
 

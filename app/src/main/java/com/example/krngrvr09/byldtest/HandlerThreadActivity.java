@@ -20,10 +20,8 @@ public class HandlerThreadActivity extends ActionBarActivity {
 
         MyHandlerThread mht = new MyHandlerThread("lol");
         mht.start();
-//        mht.getLooper();
-//        if(mht.getLooper()==null){
-//            Log.d("looper","is null");
-//        }
+        // Handler is initialized in the UI Thread, before referencing.
+        // Hence no race condition.
         MyHandler h = new MyHandler(mht.getLooper());
         Message msg = Message.obtain();
         msg.obj = "hello";
